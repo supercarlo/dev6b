@@ -1,4 +1,4 @@
-import psycopg2
+
 """
 Django settings for dv6b project.
 
