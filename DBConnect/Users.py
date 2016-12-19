@@ -10,4 +10,4 @@ def Username():
     for i in cur:
         print (i)
 
-
+Username()
