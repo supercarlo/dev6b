@@ -1,7 +1,7 @@
 class Farm():
-    farmSize = 0
+    farmSize = 10
 
-    def getFarmSize(self):
+    def getFarmSize(x):
         farmSize = 10
         return farmSize
 

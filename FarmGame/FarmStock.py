@@ -1,8 +1,10 @@
+from FarmGame import Farm
 from FarmGame import Player
 class Wheat():
     buyPrice = 15
     sellPrice = 10
     multiplier = 2
+    planted = 0
 
     def buyWheatAmount(x):
         if (x*Wheat.buyPrice > Player.Player.money):
@@ -18,7 +20,15 @@ class Wheat():
             Player.Player.money += (x * Wheat.sellPrice)
             Player.Player.wheat -= x
     def grownWheat(x):
-        return x * Wheat.multiplier
+        Player.Player.wheat -= int(x)
+        Wheat.planted += int(x)
+    @staticmethod
+    def harvestWheat():
+        Player.Player.wheat += (Wheat.planted * Wheat.multiplier)
+
+        Farm.Farm.farmSize += Wheat.planted
+        Wheat.planted -= Wheat.planted
+
 
 class Corn():
     buyPrice = 20
@@ -45,26 +55,3 @@ class Corn():
             Player.Player.Corn += (x * Corn.multiplier)
         else:
             pass
-
-#
-# print ("CORN amount in bag:  " + str(Player.Player.Corn))
-# print ("WHEAT amount in bag:  " + str(Player.Player.Wheat))
-# print ("Player money before buying   " + str(Player.Player.money))
-# print ("Buying 2 Wheat  (15 each) ")
-# Wheat.buyWheatAmount(2)
-# print ("Player money after buying:   " + str(Player.Player.money))
-# print()
-# print ("Buying 1 Corn (20 each)  ")
-# Corn.buyCornAmount(1)
-# print ("CORN amount in bag:  " + str(Player.Player.Corn))
-#
-# print ("Player money after buying:   " + str(Player.Player.money))
-# print ("TIME PASSED")
-# Corn.grownCorn(Player.Player.Corn, 10 )
-#
-# print ()
-# print ("CORN amount in bag:  " + str(Player.Player.Corn))
-# print ("WHEAT amount in bag:  " + str(Player.Player.Wheat))
-#
-#
-
