@@ -5,7 +5,7 @@ class Wheat():
     sellPrice = 10
     multiplier = 2
     planted = 0
-
+    @staticmethod
     def buyWheatAmount(x):
         if (x*Wheat.buyPrice > Player.Player.money):
             print ("Not enough money")
@@ -34,24 +34,27 @@ class Corn():
     buyPrice = 20
     sellPrice = 15
     multiplier = 2
+    planted = 0
 
     def buyCornAmount(x):
-        if (x * Corn.buyPrice > Player.Player.money):
-            print("Not enough money")
+        if (x*Corn.buyPrice > Player.Player.money):
+            print ("Not enough money")
         else:
             Player.Player.money -= x * Corn.buyPrice
-            Player.Player.corn += x
-
+            Player.Player.wheat += x
 
     def sellCornAmount(x):
         if x > Player.Player.corn:
-            print("Not enough corn to sell!")
+            print("Not enough wheat to sell!")
         else:
-            Player.Player.money += x * Corn.sellPrice
-            Player.Player.corn -= x
+            Player.Player.money += (x * Corn.sellPrice)
+            Player.Player.wheat -= x
+    def grownCorn(x):
+        Player.Player.corn -= int(x)
+        Corn.planted += int(x)
+    @staticmethod
+    def harvestCorn():
+        Player.Player.Corn += (Corn.planted * Corn.multiplier)
 
-    def grownCorn(x,Time):
-        if Time >= 10:
-            Player.Player.Corn += (x * Corn.multiplier)
-        else:
-            pass
+        Farm.Farm.farmSize += Corn.planted
+        Corn.planted -= Corn.planted

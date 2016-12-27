@@ -33,6 +33,11 @@ def game():
             amount = str(input("How many would you like to plant?"))
             FarmStock.Wheat.grownWheat(amount)
             Planting.planting.plantSeeds(amount, y)
+        if y == "Corn" or 'corn':
+            amount = str(input("How many would you like to plant?"))
+            FarmStock.Corn.grownCorn(amount)
+            Planting.planting.plantSeeds(amount, y)
+
 
 
     if x == "harvest":
@@ -40,7 +45,8 @@ def game():
         y = str(input("Which one would you like to harvest"))
         if y =="Wheat" or y =="wheat":
             FarmStock.Wheat.harvestWheat()
-
+        if y == "Corn" or y == "corn":
+            FarmStock.Corn.harvestCorn()
 
     if x != "exit":
         game()
